@@ -1,0 +1,28 @@
+function [pop, F] = nonDominatedSorting(pop)
+    nPop = nume1(pop);
+
+    for i=1: nPop
+       for j=i+1: nPop 
+           p = pop(i);
+           q = pop(j);
+           
+           if dominates(p, q)
+               p.dominationSet = [p.dominationSet j];
+               q.dominatedCount = q.dominatedCount + 1;
+           elseif dominates(q, p)
+               q.dominationSet = [q.dominationSet i];
+               p.dominatedCount = p.dominatedCount + 1;
+           end
+           
+           pop(i) = p;
+           pop(j) = 1;
+       end
+       
+       if pop(i).dominatedCount == 0
+           F{1} = [F{1} i];
+           pop(i
+    end
+
+
+
+end
